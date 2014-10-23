@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<script src="jquery-2.1.1.min.js"></script>
+		<script src="game.js"></script>
+		<script>
+			function displayHistory(){
+				var output = "<hr/>";
+				for(var key in gameHistory){
+					output += "Attempt(" + key + "): ";
+					output += gameHistory[key];
+					output += "<br/>";
+				}
+				$("#historysection").html(output);
+			}
+			function guessButtonClicked(){
+				var guess= $("#guesstext").val();
+				play(guess);
+				$("#messageh2").html(message);
+				$("#attemptsh2").html("Attempts: " + attempts);
+				guessText.select();
+				if(gameOver)
+					displayHistory();
+			}
+		</script>
+	</head>
+	<body>
+		<header>
+			<h1>Guessing game</h1>
+		</header>
+		<input type="text" id="guesstext" placeholder="Number"><br/>
+		<input type="button" value="Guess" onclick="guessButtonClicked()">
+		<h2 id="messageh2"></h2>
+		<h2 id="attemptsh2"></h2>
+		<section id="historysection"></section>
+	</body>
+</html>
