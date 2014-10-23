@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+	<head>
+		
+	</head>
+	<body>
+		<h2 id="comp"></h2>
+		<h1 id="loc"></h1>
+		<h1 id="sessionComp"></h1>
+		<h1 id="sessionLoc"></h1>
+
+		<script>
+			localStorage.setItem("company","Accenture");
+			localStorage.setItem("location","Pune");
+
+			sessionStorage.setItem("sessionCompany","sessionAccenture");
+			sessionStorage.setItem("sessionLocation","sessionPune");
+
+			document.getElementById("comp").innerHTML = localStorage.getItem("company");
+			document.getElementById("loc").innerHTML = localStorage.getItem("location");
+
+			document.getElementById("sessionComp").innerHTML = sessionStorage.getItem("sessionCompany");
+			document.getElementById("sessionLoc").innerHTML = sessionStorage.getItem("sessionLocation");
+		</script>
+	</body>
+</html>
