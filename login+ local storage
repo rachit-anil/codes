@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+
+	<head>
+		<script>
+			function init(){
+				if(localStorage.getItem("remember") != null && localStorage.getItem("remember") == "yes"){
+					document.getElementById("welcome").style.display = "inline";
+					document.getElementById("logout").style.display = "inline";
+					document.getElementById("logout").style.float = "right";
+					document.getElementById("errorMessage").style.display = "none";
+					document.getElementById("myForm").style.display = "none";
+				}else{
+					document.getElementById("welcome").style.display = "none";
+					document.getElementById("logout").style.display = "none";
+					document.getElementById("errorMessage").style.display = "none";
+					document.getElementById("myForm").style.display = "inline-block";
+					document.getElementById("myForm").style.marginTop = "15%";
+					document.getElementById("errorMessage").style.color = "red";
+					document.getElementById("logout").style.float = "right";
+				}		
+			}
+
+			function login(){
+				if(document.getElementById("rememberMe").checked == true){
+					localStorage.setItem("remember","yes");
+					document.getElementById("welcome").style.display = "inline";
+					document.getElementById("logout").style.display = "inline";
+					document.getElementById("errorMessage").style.display = "none";
+					document.getElementById("myForm").style.display = "none";
+				}else{
+					document.getElementById("welcome").style.display = "inline";
+					document.getElementById("logout").style.display = "inline";
+					document.getElementById("errorMessage").style.display = "none";
+					document.getElementById("myForm").style.display = "none";
+				}
+				
+			}
+
+			function mySubmit(){
+				if(document.getElementById("username").value != "admin" && document.getElementById("password").value != "admin"){
+					document.getElementById("errorMessage").style.display = "block";
+				}else{
+					login();
+				}
+			}
+
+			function logOut(){
+				localStorage.removeItem("remember");
+				init();
+			}
+		</script>
+	</head>
+	<body onload="init()">
+		<center>
+			<h2 id="welcome"> Welcome Admin </h2></center>
+			<input type="button" value="Log Out" onclick="logOut()" id="logout">
+			<br><br>
+			<center>
+			<div id="myForm" style="border: 1px solid black;border-width: 1px;display: inline-block;margin-top: 10%;padding: 2%;">
+				<form >
+				<input type="text" placeholder="username" id="username"> <br>
+				<input type="password" placeholder="password" id="password"> <br>
+				<input type="checkbox" id="rememberMe">Keep me signed in<br>
+				<div id="errorMessage">Invalid Credentials</div>
+				<input type="button" value="Submit" onclick="mySubmit()">
+
+			</form>
+		</div>
+		</center>
+	</body>
+</html>
