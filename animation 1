@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<style>
+			section section{
+				width:20%;
+				//float:left;
+				border: 2px solid black;
+				height: 10%;
+				margin:1%;
+				box-shadow: 2px 2px 6px black;
+				position: relative;
+				display: inline-block;
+			}
+
+			#outer{
+				padding:4%;
+				border: 2px solid black;
+				overflow: hidden;
+			}
+
+			#x:hover{
+				-webkit-transform:translate(55px,55px);
+				-webkit-transition:4s;
+			}
+
+			#x{
+				-webkit-transition:4s;
+			}
+
+			#y:hover{
+				-webkit-transform:rotateY(720deg);
+				-webkit-transition:8s;
+			}
+
+			#z:hover{
+				-webkit-transform:rotateX(72000deg);
+				-webkit-transition:2s;
+			}
+
+			#z{-webkit-transition:4s;}
+
+			@-webkit-keyframes spin{
+				from{
+					font-size: 4em;
+					-webkit-transform: rotate(0deg);
+				}
+				to{
+					font-size: 1em;
+					-webkit-transform: rotate(360deg);
+				}
+			}
+
+			div{
+				width:200px;
+				height:200px;
+				border: 2px solid black;
+				position: relative;
+				background-color:gray;
+				box-shadow:1px 1px 1px blue;
+				
+				margin-left:10%;
+				margin-top:20px;
+			}
+
+			div:hover{
+				-webkit-animation-name:spin;
+				-webkit-animation-duration: 15s;
+				-webkit-animation-iteration-count:infinite;
+			}
+
+		</style>
+	</head>
+	<body>
+		<section id="outer">
+			<section id="x">X</section>
+			<section id="y">Y</section>
+			<section id="z">Z</section>
+			<br><br>
+			<div>
+
+			</div>
+		</section>
+	</body>
+</html>
