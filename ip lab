@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script src="jquery.min.js"></script>
+		<script>
+			$().ready(init);
+
+			function init(){
+				$(":text").keyup(function(e){
+					if($(this).val().length == 3){
+						var currentElement = parseInt(e.currentTarget.id);
+						$(this).next().focus();
+					}
+				});
+
+				$("#click").click(function(){
+					$(":text").attr("disabled","disabled");
+				});
+			}	
+		</script>
+	</head>
+	<body>
+		IP Address:
+		<input type="text" id="1">.
+		<input type="text" id="2">.
+		<input type="text" id="3">.
+		<input type="text" id="4">
+		<input type="button" id="click" value="Click">
+	</body>
+</html>
