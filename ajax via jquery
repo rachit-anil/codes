@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script src="jquery.min.js"></script>
+		<script>
+			function getInfo(){
+				$.ajax({
+					url : 'world.jsp',
+					data : {
+						country : $("#country").val()
+					},
+					dataType : "json",  //JSON.parse(response)
+					success : function(response){
+						$("#message").html(response);
+						console.log(response.capital);
+					}
+ 				});
+			}
+
+			$().ready(function(){
+				$("input:button").on("click",getInfo);
+			})
+		</script>
+	</head>
+	<body>
+		<input type="text" id="country" placeholder="country">
+		<input type="button" id="info" value="Get Info">
+		<h4 id="message"></h4>
+	</body>
+</html>
