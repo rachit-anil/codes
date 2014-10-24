@@ -1,0 +1,66 @@
+<html>
+	<head>
+		<script src="jquery.min.js"></script>
+		<script>
+			$().ready(function(){
+
+				$("#myAudio").attr("src",sessionStorage.getItem("src"));
+					
+				document.getElementById("myAudio").onloadeddata = function(){
+						document.getElementById("myAudio").currentTime = sessionStorage.getItem("seekTime");
+				}
+				
+				
+
+				$("li").dblclick(function(e){
+					var src=e.target.innerHTML;
+					src +=".mp3";
+					$("#myAudio").attr("src",src);
+					document.getElementById("myAudio").play();
+					storeSrc(src);
+				});
+
+				$("#pauseButton").click(function(){
+					document.getElementById("myAudio").pause();
+				});
+
+				$("#playButton").click(function(){
+					document.getElementById("myAudio").play();
+				});
+
+				
+				
+			});
+			
+			$(window).on("unload",function(){console.log("storing");
+					sessionStorage.setItem("seekTime",document.getElementById("myAudio").currentTime);
+					console.log("stored");
+				});
+
+			$(window).on("load",function(){
+				if(null != sessionStorage.getItem("src") && null != sessionStorage.getItem("seekTime") && sessionStorage.getItem("seekTime") > 0)
+					{}
+			});
+
+			function storeSrc(src){
+				sessionStorage.setItem("src",src);
+			}
+		</script>
+	</head>
+	<body id="page">
+		<table width=70% align="center" style="margin-top:5%">
+			<tr>
+				<td> <ol> 
+					<li id="1" value="Kalimba">Kalimba</li>
+					<li id="2" value="Maid_with_the_Flaxen_Hair">Maid with the Flaxen Hair</li>
+					<li id="3" value="Sleep_Away">Sleep Away</li>
+				</ol></td>
+				<td>
+					<audio id="myAudio" src="" controls></audio><br><br>
+					<input type="button" value="Play" id="playButton">		
+					<input type="button" value="Pause" id="pauseButton">
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>
