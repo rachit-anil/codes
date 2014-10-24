@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<style>
+			div{
+				display: inline-flex;
+				border:1px solid black;
+			}
+
+			
+
+			@-webkit-keyframes rightLeft{
+				25%{-webkit-transform: translateY(-126px); }
+				50%{-webkit-transform: rotate(100deg);-webkit-transform: translate(129px,-127px);}
+				75%{-webkit-transform: translate(129px,2px);}
+				95%{-webkit-transform: translate(0px,2px);}
+			}
+
+			#move{
+				
+				-webkit-animation-name: rightLeft;
+				-webkit-animation-duration:12s;
+				-webkit-animation-iteration-count:infinite;
+
+				
+
+				position:absolute;
+				width: 25px;
+				height: 25px;
+				margin-top:100px;
+				margin-left: -27px;
+				border-radius:50%;
+			}
+
+			#fixed{
+				width:100px;
+				height: 100px;
+			}
+
+			#fixed:before{
+				height: 25px;
+				width:25px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div style="margin-left:200px;margin-top:100px;height:500px;width:500px;border:none">
+			<div id="move">A</div>
+			<div id="fixed"></div>
+		</div>
+	</body>
+</html>
